@@ -1,0 +1,7 @@
+Passed: 0 Failed: 20 Total: 20
+
+Manual analysis:
+Not Scam: 11
+Not enough information: 3
+Passed: 0 Failed: 20 Total: 20
+
