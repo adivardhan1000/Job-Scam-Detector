@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Scam Detector</title>
+    <style>
+        .form-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <h1>Job Scam Detector</h1>
+    <form  class="form-right" method="post" action="/">
+        <label for="company_profile">Company Profile:</label>
+        <textarea id="company_profile" name="company_profile" rows="4" cols="50" required></textarea><br>
+
+        <label for="job_description">Job Description:</label>
+        <textarea id="job_description" name="job_description" rows="4" cols="50" required></textarea><br>
+
+        <label for="job_requirements">Requirements:</label>
+        <textarea id="job_requirements" name="job_requirements" rows="4" cols="50" required></textarea><br>
+
+        <label for="job_benefits">Benefits:</label>
+        <textarea id="job_benefits" name="job_benefits" rows="4" cols="50" required></textarea><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if user_input %}
+        <p>Result: {{ user_input }}</p>
+    {% endif %}
+
+    {% if api_output %}
+        <p>Result: {{ api_output }}</p>
+    {% endif %}
+</body>
+</html>
