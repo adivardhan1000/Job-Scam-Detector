@@ -33,9 +33,6 @@ not_scam_json = [row_to_json(row) for _, row in random_not_scam_rows.iterrows()]
 # Combine scam and not scam JSONs
 output_json = scam_json + not_scam_json
 
-# Write the output to a JSON file
-#with open('output.json', 'w') as json_file:
-#    json.dump(output_json, json_file, indent=2)
 
 with open('test_data.json', 'w', encoding='utf-8') as json_file:
     for _ in output_json:
