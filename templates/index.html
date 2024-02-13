@@ -5,16 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Scam Detector</title>
     <style>
-        .form-right {
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        form {
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        label {
+            font-weight: bold;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            resize: vertical;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
     <h1>Job Scam Detector</h1>
     <form  class="form-right" method="post" action="/">
+        <label for="api_key">Enter OpenAI API key</label>
+        <input type="text" name="api_key" />
+
         <label for="company_profile">Company Profile:</label>
         <textarea id="company_profile" name="company_profile" rows="4" cols="50" required></textarea><br>
 
@@ -28,14 +69,18 @@
         <textarea id="job_benefits" name="job_benefits" rows="4" cols="50" required></textarea><br>
 
         <button type="submit">Submit</button>
-    </form>
-
-    {% if user_input %}
+        {% if user_input %}
         <p>Result: {{ user_input }}</p>
     {% endif %}
 
     {% if api_output %}
         <p>Result: {{ api_output }}</p>
     {% endif %}
+    </form>
+
+    <p>Scared about entering your API key? This code is open-source and can be run locally as well. You can always audit it at <a href="https://github.com/adivardhan1000/Spam-Detector/">https://github.com/adivardhan1000/Spam-Detector/ </a>.</p>
+    <p>Do you think the result is wrong or have some suggestions with the program? Simply go to <a href="https://github.com/adivardhan1000/Spam-Detector/issues">https://github.com/adivardhan1000/Spam-Detector/issues</a> and create a new issue with the job posting and the expected result.</p>
+    <p>Don't know how to use Gitub? Simply fill this form. <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BkLTzEVnUkKFBskQmbf7ON8u8clH3w9Ply3hwdZO-x9UNzU2OVdKNTJJUjdZN0ZCSk1WQTNCRzY5Si4u">Click here</a>  </p>
+
 </body>
 </html>
