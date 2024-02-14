@@ -13,11 +13,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
         }
-        h1 {
-            margin-bottom: 20px;
-        }
+        
         form {
             width: 80%;
             max-width: 600px;
@@ -48,39 +45,50 @@
         button:hover {
             background-color: #0056b3;
         }
+        footer {
+            margin-top: 20px;
+            text-align: left;
+        }
     </style>
 </head>
-<body style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
-    <h1>Job Scam Detector</h1>
+<body>
+    
     <form  class="form-right" method="post" action="/">
-        <label for="api_key">Enter OpenAI API key</label>
-        <input type="text" name="api_key" />
-
+        <h1>Job Scam Detector</h1>
         <label for="company_profile">Company Profile:</label>
-        <textarea id="company_profile" name="company_profile" rows="4" cols="50" required></textarea><br>
+        <textarea id="company_profile" name="company_profile" rows="4" cols="50" required>{{ user_input[0] if user_input else ''}}</textarea><br>
 
         <label for="job_description">Job Description:</label>
-        <textarea id="job_description" name="job_description" rows="4" cols="50" required></textarea><br>
+        <textarea id="job_description" name="job_description" rows="4" cols="50" required>{{ user_input[1] if user_input else ''}}</textarea><br>
 
         <label for="job_requirements">Requirements:</label>
-        <textarea id="job_requirements" name="job_requirements" rows="4" cols="50" required></textarea><br>
+        <textarea id="job_requirements" name="job_requirements" rows="4" cols="50" required>{{ user_input[2] if user_input else ''}}</textarea><br>
 
         <label for="job_benefits">Benefits:</label>
-        <textarea id="job_benefits" name="job_benefits" rows="4" cols="50" required></textarea><br>
+        <textarea id="job_benefits" name="job_benefits" rows="4" cols="50" required>{{ user_input[3] if user_input else ''}}</textarea><br>
 
         <button type="submit">Submit</button>
-        {% if user_input %}
-        <p>Result: {{ user_input }}</p>
-    {% endif %}
 
     {% if api_output %}
-        <p>Result: {{ api_output }}</p>
+        <p><b>Result:</b> <h3>{{ api_output }}</h3></p>
     {% endif %}
     </form>
 
-    <p>Scared about entering your API key? This code is open-source and can be run locally as well. You can always audit it at <a href="https://github.com/adivardhan1000/Spam-Detector/">https://github.com/adivardhan1000/Spam-Detector/ </a>.</p>
-    <p>Do you think the result is wrong or have some suggestions with the program? Simply go to <a href="https://github.com/adivardhan1000/Spam-Detector/issues">https://github.com/adivardhan1000/Spam-Detector/issues</a> and create a new issue with the job posting and the expected result.</p>
-    <p>Don't know how to use Gitub? Simply fill this form. <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BkLTzEVnUkKFBskQmbf7ON8u8clH3w9Ply3hwdZO-x9UNzU2OVdKNTJJUjdZN0ZCSk1WQTNCRzY5Si4u">Click here</a>  </p>
+    <footer>
+        There are enough credits for about 500 checks. Consider making a small donation if you like the project. <br> <script async
+    src="https://js.stripe.com/v3/buy-button.js">
+  </script>
+  
+  <stripe-buy-button
+    buy-button-id="buy_btn_1OjVlGI1I2Zt1l0JW0WyAS1N"
+    publishable-key="pk_live_51Lq8ogI1I2Zt1l0Jxb2cfB2Mhi1SkhxLrhK2vmnYqLdKMFrUGxSdhSVAtn3TjevGoHMFSpTy9dMxWjceEi341yVu00fDJJIM16"
+  >
+  </stripe-buy-button><br>
+    <p><b>Want to run it locally?</b><br> Unfortunately, OpenAI doesn't allow publishing fine-tuned models. The code and the fine-tuning helper filers are open-source and can be audited always audit it at <a href="https://github.com/adivardhan1000/Spam-Detector/">https://github.com/adivardhan1000/Spam-Detector/ </a>.</p>
+    <p><b>Do you think the result is wrong or have some suggestions with the program?</b> <br>Simply go to <a href="https://github.com/adivardhan1000/Spam-Detector/issues">https://github.com/adivardhan1000/Spam-Detector/issues</a> and create a new issue with the job posting and the expected result.</p>
+    <p><b>Don't know how to use Gitub?</b> <br>Simply fill this form. <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=BkLTzEVnUkKFBskQmbf7ON8u8clH3w9Ply3hwdZO-x9UNzU2OVdKNTJJUjdZN0ZCSk1WQTNCRzY5Si4u">Click here</a>  </p> <br>
+    
+</footer>
 
 </body>
 </html>

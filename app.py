@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 app = Flask(__name__)
+client = OpenAI()
 
 def format_payload(company_profile, job_description, job_requirements, job_benefits):
     payload = f"Company Profile: {company_profile} ; Job Description: {job_description} ; Requirements: {job_requirements} ; Benefits: {job_benefits} ;"
@@ -27,7 +28,6 @@ def index():
         user_message = {"role": "user", "content": user_input}
 
         # Send request to OpenAI API
-        client = OpenAI(api_key=request.form['api_key'])
         response = client.chat.completions.create(
             model="ft:gpt-3.5-turbo-0613:personal::8P1FVa43",
             messages=[system_message, user_message]
@@ -35,7 +35,7 @@ def index():
         # Extract and display the API response
         api_output = response.choices[0].message.content
 
-        return render_template('index.html', user_input=user_input, api_output=api_output)
+        return render_template('index.html', user_input=(company_profile,job_description,job_requirements,job_benefits), api_output=api_output)
 
     return render_template('index.html')
 
